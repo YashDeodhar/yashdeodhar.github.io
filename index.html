@@ -39,21 +39,6 @@
             align-items: center;
         }
 
-        h1 {
-            position: absolute;
-
-            /*
-                This is now the LEFT EDGE of the name,
-                rather than the center of the name.
-            */
-            left: 25%;
-
-            margin: 0;
-
-            font-size: 32px;
-            font-weight: 500;
-        }
-
 
         /* =========================================================
            RIGHT SIDE HEADER ICONS
@@ -229,17 +214,35 @@
         .profile {
             width: 90%;
             max-width: 1000px;
-        
-            margin: 25px auto 0;
-        
+
+            margin: 10px auto 0;
+
             display: grid;
-        
+
             grid-template-columns: 220px minmax(0, 650px);
-        
+
             gap: 60px;
-        
+
             justify-content: center;
             align-items: start;
+        }
+
+
+        /* =========================================================
+           NAME + PHOTO COLUMN
+        ========================================================= */
+
+        .photo-column {
+            width: 220px;
+        }
+
+        .photo-column h1 {
+            margin: 0 0 25px 0;
+
+            font-size: 32px;
+            font-weight: 500;
+
+            white-space: nowrap;
         }
 
 
@@ -248,16 +251,14 @@
         .profile-photo {
             width: 220px;
             max-width: 220px;
-        
+
             height: auto;
-        
+
             display: block;
-        
-            position: relative;
-            top: 50px;
-        
+
             border-radius: 6px;
         }
+
 
         /* ---------------- PROFILE TEXT ---------------- */
 
@@ -315,192 +316,221 @@
         /* =========================================================
            TABBED CONTENT SECTION
         ========================================================= */
-        
+
         .tabs-section {
-            width: 90%;
-            max-width: 1000px;
-        
-            margin: 70px auto 0;
+            /*
+                About 70% of the browser window,
+                centered regardless of screen size.
+            */
+            width: 70vw;
+
+            margin: 70px auto 60px;
         }
-        
-        
+
+
         /* ---------------- TAB BUTTONS ---------------- */
-        
+
         .tab-buttons {
             width: 100%;
-        
+
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-        
+
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-bottom: none;
-        
+
             border-radius: 8px 8px 0 0;
-        
+
             overflow: hidden;
         }
-        
-        
+
+
         .tab-button {
             padding: 20px 10px;
-        
+
             background-color: transparent;
             color: inherit;
-        
+
             border: none;
             border-right: 1px solid rgba(255, 255, 255, 0.3);
-        
+
             font-family: inherit;
             font-size: 18px;
             font-weight: 500;
-        
+
             cursor: pointer;
-        
+
             transition:
                 background-color 0.25s ease,
                 color 0.25s ease;
         }
-        
-        
+
+
         .tab-button:last-child {
             border-right: none;
         }
-        
-        
+
+
         .tab-button:hover {
             background-color: rgba(255, 255, 255, 0.08);
         }
-        
-        
-        /*
-            Currently selected tab
-        */
-        
+
+
+        /* Selected tab */
+
         .tab-button.active {
             background-color: #ffffff;
             color: #111111;
         }
-        
-        
+
+
         /* ---------------- DISPLAY AREA ---------------- */
-        
+
         .tab-display {
             width: 100%;
-        
+
             min-height: 350px;
-        
+
             border: 1px solid rgba(255, 255, 255, 0.3);
-        
+
             border-radius: 0 0 8px 8px;
-        
+
             padding: 40px;
         }
-        
-        
-        /*
-            Hide all tab contents by default.
-        */
-        
+
+
+        /* Hide inactive content */
+
         .tab-content {
             display: none;
         }
-        
-        
-        /*
-            Only show whichever content is active.
-        */
-        
+
+
+        /* Show active content */
+
         .tab-content.active {
             display: block;
         }
-        
-        
+
+
         .tab-content h2 {
             margin-top: 0;
-        
+
             font-size: 28px;
             font-weight: 500;
         }
-        
-        
+
+
         .tab-content p {
             font-size: 17px;
             line-height: 1.7;
         }
-        
-        
+
+
         /* =========================================================
            TABS — LIGHT MODE
         ========================================================= */
-        
+
         body.light-mode .tab-buttons,
         body.light-mode .tab-display {
             border-color: rgba(0, 0, 0, 0.25);
         }
-        
-        
+
+
         body.light-mode .tab-button {
             border-right-color: rgba(0, 0, 0, 0.25);
         }
-        
-        
+
+
         body.light-mode .tab-button:hover {
             background-color: rgba(0, 0, 0, 0.06);
         }
-        
-        
+
+
         body.light-mode .tab-button.active {
             background-color: #111111;
             color: #ffffff;
         }
-                
+
+
         /* =========================================================
            MOBILE
         ========================================================= */
 
         @media (max-width: 800px) {
-        
+
+            header {
+                height: 100px;
+            }
+
+            .header-actions {
+                top: 26px;
+                right: 20px;
+
+                gap: 14px;
+            }
+
+
+            /* Stack profile vertically */
+
             .profile {
                 width: 90%;
-        
-                margin: 20px auto 0;
-        
+
+                margin: 10px auto 0;
+
                 grid-template-columns: 1fr;
-        
-                gap: 35px;
+
+                gap: 30px;
             }
-        
+
+
+            .photo-column {
+                width: 220px;
+
+                justify-self: center;
+            }
+
+
+            .photo-column h1 {
+                font-size: 27px;
+            }
+
+
             .profile-photo {
                 width: 220px;
                 max-width: 220px;
-        
-                justify-self: center;
-        
-                top: 0;
             }
-        
+
+
             .profile-text {
                 width: 100%;
+
                 font-size: 16px;
             }
-        
-        
+
+
+            /* Tabs get wider on small screens */
+
             .tabs-section {
-                width: 90%;
-        
-                margin: 50px auto 0;
+                width: 90vw;
+
+                margin: 50px auto 40px;
             }
-        
+
+
             .tab-button {
                 padding: 15px 5px;
+
                 font-size: 14px;
             }
-        
+
+
             .tab-display {
                 min-height: 300px;
+
                 padding: 25px;
             }
-        
+
         }
 
     </style>
@@ -515,9 +545,6 @@
     ========================================================== -->
 
     <header>
-
-        <h1>Yash Deodhar</h1>
-
 
         <div class="header-actions">
 
@@ -589,7 +616,11 @@
 
             <!-- THEME BUTTON -->
 
-            <button id="theme-toggle" aria-label="Switch to light mode">
+            <button
+                id="theme-toggle"
+                type="button"
+                aria-label="Switch to light mode"
+            >
 
                 <span class="moon-icon"></span>
 
@@ -604,19 +635,35 @@
 
 
     <!-- =========================================================
-         PROFILE SECTION
+         MAIN CONTENT
     ========================================================== -->
 
     <main>
 
+
+        <!-- =========================================================
+             PROFILE
+        ========================================================== -->
+
         <section class="profile">
 
-            <img
-                src="profile.jpeg"
-                alt="Yash Deodhar"
-                class="profile-photo"
-            >
 
+            <!-- NAME + PHOTO -->
+
+            <div class="photo-column">
+
+                <h1>Yash Deodhar</h1>
+
+                <img
+                    src="profile.jpeg"
+                    alt="Yash Deodhar"
+                    class="profile-photo"
+                >
+
+            </div>
+
+
+            <!-- ABOUT ME -->
 
             <div class="profile-text">
 
@@ -636,106 +683,115 @@
 
         </section>
 
+
+
         <!-- =========================================================
              TABBED CONTENT
         ========================================================== -->
-        
+
         <section class="tabs-section">
-        
-        
+
+
             <!-- TAB BUTTONS -->
-        
+
             <div class="tab-buttons">
-        
+
+
+                <!-- PROJECTS IS FIRST AND ACTIVE BY DEFAULT -->
+
                 <button
+                    type="button"
                     class="tab-button active"
-                    data-tab="visuals"
-                >
-                    Cool Visuals
-                </button>
-        
-        
-                <button
-                    class="tab-button"
                     data-tab="projects"
                 >
                     Projects
                 </button>
-        
-        
+
+
                 <button
+                    type="button"
+                    class="tab-button"
+                    data-tab="visuals"
+                >
+                    Cool Visuals
+                </button>
+
+
+                <button
+                    type="button"
                     class="tab-button"
                     data-tab="teaching"
                 >
                     Teaching Aids
                 </button>
-        
+
             </div>
-        
-        
-        
+
+
+
             <!-- DISPLAY AREA -->
-        
+
             <div class="tab-display">
-        
-        
-                <!-- COOL VISUALS -->
-        
+
+
+                <!-- PROJECTS -->
+
                 <div
-                    id="visuals"
+                    id="projects"
                     class="tab-content active"
                 >
-        
+
+                    <h2>Projects</h2>
+
+                    <p>
+                        This section will contain some of my research and
+                        programming projects.
+                    </p>
+
+                </div>
+
+
+
+                <!-- COOL VISUALS -->
+
+                <div
+                    id="visuals"
+                    class="tab-content"
+                >
+
                     <h2>Cool Visuals</h2>
-        
+
                     <p>
                         This section will contain animations, simulations,
                         mathematical visualizations, and other things that I
                         think look cool.
                     </p>
-        
+
                 </div>
-        
-        
-        
-                <!-- PROJECTS -->
-        
-                <div
-                    id="projects"
-                    class="tab-content"
-                >
-        
-                    <h2>Projects</h2>
-        
-                    <p>
-                        This section will contain some of my research and
-                        programming projects.
-                    </p>
-        
-                </div>
-        
-        
-        
+
+
+
                 <!-- TEACHING AIDS -->
-        
+
                 <div
                     id="teaching"
                     class="tab-content"
                 >
-        
+
                     <h2>Teaching Aids</h2>
-        
+
                     <p>
                         This section will contain notes, visual explanations,
                         problem sets, and other teaching resources.
                     </p>
-        
+
                 </div>
-        
-        
+
+
             </div>
-        
+
         </section>
+
 
     </main>
 
@@ -744,73 +800,82 @@
     <!-- =========================================================
          JAVASCRIPT
     ========================================================== -->
-    
+
     <script>
-    
+
         /* =========================================================
            DARK / LIGHT MODE
         ========================================================= */
-    
+
         const themeToggle = document.getElementById("theme-toggle");
-    
+
         themeToggle.addEventListener("click", function () {
-    
+
             document.body.classList.toggle("light-mode");
-    
+
             if (document.body.classList.contains("light-mode")) {
-    
+
                 themeToggle.setAttribute(
                     "aria-label",
                     "Switch to dark mode"
                 );
-    
+
             } else {
-    
+
                 themeToggle.setAttribute(
                     "aria-label",
                     "Switch to light mode"
                 );
-    
+
             }
-    
+
         });
-    
-    
+
+
+
         /* =========================================================
            TABS
         ========================================================= */
-    
+
         const tabButtons = document.querySelectorAll(".tab-button");
         const tabContents = document.querySelectorAll(".tab-content");
-    
+
         tabButtons.forEach(function (button) {
-    
+
             button.addEventListener("click", function () {
-    
+
                 const selectedTab = button.getAttribute("data-tab");
-    
+
+
                 /* Remove active state from all buttons */
+
                 tabButtons.forEach(function (btn) {
                     btn.classList.remove("active");
                 });
-    
-                /* Hide all tab content */
+
+
+                /* Hide all tab contents */
+
                 tabContents.forEach(function (content) {
                     content.classList.remove("active");
                 });
-    
+
+
                 /* Activate clicked button */
+
                 button.classList.add("active");
-    
+
+
                 /* Show corresponding content */
+
                 document
                     .getElementById(selectedTab)
                     .classList.add("active");
-    
+
             });
-    
+
         });
-    
+
     </script>
 
 
