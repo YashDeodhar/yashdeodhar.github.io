@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Yash Deodhar</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            background-color: #111111;
+            color: #ffffff;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            transition:
+                background-color 0.35s ease,
+                color 0.35s ease;
+        }
+
+        /* ---------------- HEADER ---------------- */
+
+        header {
+            position: relative;
+            height: 110px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            margin: 0;
+
+            font-size: 32px;
+            font-weight: 500;
+
+            transform: translateX(-40px);
+        }
+
+        /* ---------------- THEME BUTTON ---------------- */
+
+        #theme-toggle {
+            position: absolute;
+
+            top: 26px;
+            right: 40px;
+
+            width: 52px;
+            height: 52px;
+
+            border: none;
+            border-radius: 50%;
+
+            background-color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            padding: 0;
+
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.25),
+                0 0 0 1px rgba(255, 255, 255, 0.08);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background-color 0.35s ease;
+        }
+
+        #theme-toggle:hover {
+            transform: scale(1.08);
+
+            box-shadow:
+                0 4px 14px rgba(0, 0, 0, 0.35),
+                0 0 10px rgba(255, 255, 255, 0.15);
+        }
+
+        /* ---------------- MOON ---------------- */
+
+        .moon-icon {
+            position: relative;
+
+            width: 25px;
+            height: 25px;
+
+            border-radius: 50%;
+
+            background-color: #080808;
+
+            transform: rotate(-18deg);
+
+            transition:
+                transform 0.4s ease,
+                opacity 0.25s ease;
+        }
+
+        /*
+            White circle placed over the black circle.
+            This "cuts out" part of it and creates the crescent.
+        */
+
+        .moon-icon::after {
+            content: "";
+
+            position: absolute;
+
+            width: 27px;
+            height: 27px;
+
+            border-radius: 50%;
+
+            background-color: white;
+
+            top: -3px;
+            left: 10px;
+        }
+
+        #theme-toggle:hover .moon-icon {
+            transform: rotate(-25deg) scale(1.06);
+        }
+
+        /* ---------------- SUN ---------------- */
+
+        .sun-icon {
+            display: none;
+
+            color: #111111;
+
+            font-size: 31px;
+            line-height: 1;
+
+            transition: transform 0.4s ease;
+        }
+
+        #theme-toggle:hover .sun-icon {
+            transform: rotate(25deg) scale(1.06);
+        }
+
+        /* ---------------- LIGHT MODE ---------------- */
+
+        body.light-mode {
+            background-color: #ffffff;
+            color: #111111;
+        }
+
+        body.light-mode #theme-toggle {
+            background-color: #f0f0f0;
+
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(0, 0, 0, 0.06);
+        }
+
+        body.light-mode .moon-icon {
+            display: none;
+        }
+
+        body.light-mode .sun-icon {
+            display: block;
+        }
+
+        /* ---------------- MOBILE ---------------- */
+
+        @media (max-width: 600px) {
+
+            header {
+                height: 95px;
+            }
+
+            h1 {
+                font-size: 26px;
+                transform: translateX(-20px);
+            }
+
+            #theme-toggle {
+                width: 44px;
+                height: 44px;
+
+                top: 25px;
+                right: 20px;
+            }
+
+            .moon-icon {
+                width: 27px;
+                height: 27px;
+            }
+
+            .moon-icon::after {
+                width: 24px;
+                height: 24px;
+
+                left: 9px;
+                top: -3px;
+            }
+
+            .sun-icon {
+                font-size: 27px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <h1>Yash Deodhar</h1>
+
+        <button id="theme-toggle" aria-label="Switch to light mode">
+
+            <span class="moon-icon"></span>
+
+            <span class="sun-icon">☀</span>
+
+        </button>
+
+    </header>
+
+
+    <script>
+
+        const themeToggle = document.getElementById("theme-toggle");
+
+        themeToggle.addEventListener("click", function () {
+
+            document.body.classList.toggle("light-mode");
+
+            if (document.body.classList.contains("light-mode")) {
+
+                themeToggle.setAttribute(
+                    "aria-label",
+                    "Switch to dark mode"
+                );
+
+            } else {
+
+                themeToggle.setAttribute(
+                    "aria-label",
+                    "Switch to light mode"
+                );
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
