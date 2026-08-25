@@ -599,6 +599,32 @@
 
 
 
+
+        /* =========================================================
+           TEACHING AID VIDEOS
+        ========================================================= */
+
+        .teaching-aid-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(220px, 0.75fr);
+            gap: 40px;
+            align-items: center;
+        }
+
+        .teaching-video {
+            width: 100%;
+            height: auto;
+            max-height: 430px;
+            display: block;
+            object-fit: contain;
+            border-radius: 6px;
+            background-color: #000000;
+        }
+
+        .teaching-aid-text h2 {
+            margin-top: 0;
+        }
+
         /* =========================================================
            CAROUSEL ARROWS
         ========================================================= */
@@ -918,6 +944,15 @@
             .carousel-arrow.right {
 
                 right: 5px;
+            }
+
+            .teaching-aid-layout {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .teaching-video {
+                max-height: 320px;
             }
 
         }
@@ -1307,11 +1342,24 @@
 
                     <div class="carousel-item active">
 
-                        <h2>Teaching Aid 1</h2>
+                        <div class="teaching-aid-layout">
 
-                        <p>
-                            My first teaching resource.
-                        </p>
+                            <video class="teaching-video" controls muted loop playsinline preload="metadata">
+                                <source src="Teaching-Aid-1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+
+                            <div class="teaching-aid-text">
+
+                                <h2>Teaching Aid 1</h2>
+
+                                <p>
+                                    My first teaching resource.
+                                </p>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
@@ -1321,11 +1369,24 @@
 
                     <div class="carousel-item">
 
-                        <h2>Teaching Aid 2</h2>
+                        <div class="teaching-aid-layout">
 
-                        <p>
-                            My second teaching resource.
-                        </p>
+                            <video class="teaching-video" controls muted loop playsinline preload="metadata">
+                                <source src="Teaching-Aid-2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+
+                            <div class="teaching-aid-text">
+
+                                <h2>Teaching Aid 2</h2>
+
+                                <p>
+                                    My second teaching resource.
+                                </p>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
@@ -1335,11 +1396,24 @@
 
                     <div class="carousel-item">
 
-                        <h2>Teaching Aid 3</h2>
+                        <div class="teaching-aid-layout">
 
-                        <p>
-                            My third teaching resource.
-                        </p>
+                            <video class="teaching-video" controls muted loop playsinline preload="metadata">
+                                <source src="Teaching-Aid-3.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+
+                            <div class="teaching-aid-text">
+
+                                <h2>Teaching Aid 3</h2>
+
+                                <p>
+                                    My third teaching resource.
+                                </p>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
