@@ -227,33 +227,19 @@
         ========================================================= */
 
         .profile {
-            /*
-                Same left position as the name.
-                This makes the photo line up with "Yash Deodhar".
-            */
-            margin-left: 25%;
-
-            /*
-                Smaller top margin moves photo + text upward.
-            */
-            margin-top: 25px;
-
-            width: 70%;
+            width: 90%;
             max-width: 1000px;
-
+        
+            margin: 25px auto 0;
+        
             display: grid;
-
-            /*
-                Image is 220px, so don't reserve 330px anymore.
-            */
-            grid-template-columns: 300px 1fr;
-
+        
+            grid-template-columns: 220px minmax(0, 650px);
+        
             gap: 60px;
-
-            /*
-                Align About Me with the TOP of the image.
-            */
-            /*align-items: start;*/
+        
+            justify-content: center;
+            align-items: start;
         }
 
 
@@ -262,15 +248,16 @@
         .profile-photo {
             width: 220px;
             max-width: 220px;
-
+        
             height: auto;
-
+        
             display: block;
+        
             position: relative;
             top: 50px;
+        
             border-radius: 6px;
         }
-
 
         /* ---------------- PROFILE TEXT ---------------- */
 
@@ -330,15 +317,10 @@
         ========================================================= */
         
         .tabs-section {
-            /*
-                Align this section with the name/photo.
-            */
-            margin-left: 15%;
-        
-            width: 70%;
+            width: 90%;
             max-width: 1000px;
         
-            margin-top: 70px;
+            margin: 70px auto 0;
         }
         
         
@@ -477,67 +459,48 @@
         ========================================================= */
 
         @media (max-width: 800px) {
-
-            .tabs-section {
-                width: calc(100% - 50px);
-            
-                margin-left: 25px;
-                margin-top: 50px;
-            }
-            
-            
-            .tab-button {
-                padding: 15px 5px;
-            
-                font-size: 14px;
-            }
-            
-            
-            .tab-display {
-                min-height: 300px;
-            
-                padding: 25px;
-            }
-
-            header {
-                height: 150px;
-            }
-
-            h1 {
-                top: 27px;
-
-                left: 25px;
-
-                font-size: 27px;
-            }
-
-            .header-actions {
-                top: 87px;
-                left: 25px;
-                right: auto;
-
-                gap: 17px;
-            }
-
+        
             .profile {
-                width: calc(100% - 50px);
-
-                margin-left: 25px;
-                margin-top: 10px;
-
+                width: 90%;
+        
+                margin: 20px auto 0;
+        
                 grid-template-columns: 1fr;
-
+        
                 gap: 35px;
             }
-
+        
             .profile-photo {
                 width: 220px;
                 max-width: 220px;
+        
+                justify-self: center;
+        
+                top: 0;
             }
-
+        
             .profile-text {
+                width: 100%;
                 font-size: 16px;
             }
+        
+        
+            .tabs-section {
+                width: 90%;
+        
+                margin: 50px auto 0;
+            }
+        
+            .tab-button {
+                padding: 15px 5px;
+                font-size: 14px;
+            }
+        
+            .tab-display {
+                min-height: 300px;
+                padding: 25px;
+            }
+        
         }
 
     </style>
