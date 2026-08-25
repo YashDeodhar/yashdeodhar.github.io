@@ -7,6 +7,7 @@
     <title>Yash Deodhar</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -25,7 +26,10 @@
                 color 0.35s ease;
         }
 
-        /* ---------------- HEADER ---------------- */
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
 
         header {
             position: relative;
@@ -33,26 +37,94 @@
 
             display: flex;
             align-items: center;
-            justify-content: center;
         }
 
         h1 {
+            position: absolute;
+
+            /* Center of the name is about 1/4 across the page */
+            left: 24%;
+            transform: translateX(-50%);
+
             margin: 0;
 
             font-size: 32px;
             font-weight: 500;
-
-            transform: translateX(-40px);
         }
 
-        /* ---------------- THEME BUTTON ---------------- */
 
-        #theme-toggle {
+        /* =========================================================
+           RIGHT SIDE HEADER ICONS
+        ========================================================= */
+
+        .header-actions {
             position: absolute;
 
             top: 26px;
             right: 40px;
 
+            display: flex;
+            align-items: center;
+
+            gap: 18px;
+        }
+
+
+        /* ---------------- SOCIAL ICONS ---------------- */
+
+        .social-link {
+            width: 25px;
+            height: 25px;
+
+            color: #ffffff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-decoration: none;
+
+            transition:
+                transform 0.2s ease,
+                opacity 0.2s ease;
+        }
+
+        .social-link svg {
+            width: 23px;
+            height: 23px;
+
+            fill: currentColor;
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px) scale(1.08);
+            opacity: 0.75;
+        }
+
+
+        /* ---------------- CV ICON ---------------- */
+
+        .cv-icon {
+            font-size: 12px;
+            font-weight: bold;
+
+            width: 27px;
+            height: 27px;
+
+            border: 2px solid currentColor;
+            border-radius: 4px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* =========================================================
+           THEME BUTTON
+        ========================================================= */
+
+        #theme-toggle {
             width: 42px;
             height: 42px;
 
@@ -87,49 +159,48 @@
                 0 0 10px rgba(255, 255, 255, 0.15);
         }
 
+
         /* ---------------- MOON ---------------- */
 
         .moon-icon {
             position: relative;
 
-            width: 25px;
-            height: 25px;
+            width: 23px;
+            height: 23px;
 
             border-radius: 50%;
 
-            /* background-color: #080808; */
+            background-color: #080808;
 
             transform: rotate(-18deg);
+
+            overflow: hidden;
 
             transition:
                 transform 0.4s ease,
                 opacity 0.25s ease;
         }
 
-        /*
-            White circle placed over the black circle.
-            This "cuts out" part of it and creates the crescent.
-        */
-
         .moon-icon::after {
             content: "";
 
             position: absolute;
 
-            width: 27px;
-            height: 27px;
+            width: 21px;
+            height: 21px;
 
             border-radius: 50%;
 
             background-color: white;
 
             top: -3px;
-            left: 10px;
+            left: 8px;
         }
 
         #theme-toggle:hover .moon-icon {
             transform: rotate(-25deg) scale(1.06);
         }
+
 
         /* ---------------- SUN ---------------- */
 
@@ -138,7 +209,7 @@
 
             color: #111111;
 
-            font-size: 31px;
+            font-size: 28px;
             line-height: 1;
 
             transition: transform 0.4s ease;
@@ -148,10 +219,74 @@
             transform: rotate(25deg) scale(1.06);
         }
 
-        /* ---------------- LIGHT MODE ---------------- */
+
+        /* =========================================================
+           MAIN PROFILE SECTION
+        ========================================================= */
+
+        .profile {
+            width: 82%;
+            max-width: 1050px;
+
+            margin: 50px auto 0;
+
+            display: grid;
+
+            grid-template-columns: 330px 1fr;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+
+        /* ---------------- PROFILE IMAGE ---------------- */
+
+        .profile-photo {
+            width: 100%;
+            max-width: 330px;
+
+            height: auto;
+
+            display: block;
+
+            border-radius: 6px;
+        }
+
+
+        /* ---------------- PROFILE TEXT ---------------- */
+
+        .profile-text {
+            font-size: 17px;
+            line-height: 1.7;
+
+            max-width: 650px;
+        }
+
+        .profile-text h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+
+            font-size: 28px;
+            font-weight: 500;
+        }
+
+        .profile-text p {
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+
+
+        /* =========================================================
+           LIGHT MODE
+        ========================================================= */
 
         body.light-mode {
             background-color: #ffffff;
+            color: #111111;
+        }
+
+        body.light-mode .social-link {
             color: #111111;
         }
 
@@ -171,64 +306,212 @@
             display: block;
         }
 
-        /* ---------------- MOBILE ---------------- */
 
-        @media (max-width: 600px) {
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 800px) {
 
             header {
-                height: 95px;
+                height: 150px;
             }
 
             h1 {
-                font-size: 26px;
-                transform: translateX(-20px);
-            }
+                top: 27px;
 
-            #theme-toggle {
-                width: 44px;
-                height: 44px;
+                left: 25px;
+                transform: none;
 
-                top: 25px;
-                right: 20px;
-            }
-
-            .moon-icon {
-                width: 27px;
-                height: 27px;
-            }
-
-            .moon-icon::after {
-                width: 24px;
-                height: 24px;
-
-                left: 9px;
-                top: -3px;
-            }
-
-            .sun-icon {
                 font-size: 27px;
+            }
+
+            .header-actions {
+                top: 87px;
+                left: 25px;
+                right: auto;
+
+                gap: 17px;
+            }
+
+            .profile {
+                width: calc(100% - 50px);
+
+                margin-top: 25px;
+
+                grid-template-columns: 1fr;
+
+                gap: 35px;
+            }
+
+            .profile-photo {
+                max-width: 300px;
+            }
+
+            .profile-text {
+                font-size: 16px;
             }
         }
 
     </style>
 </head>
 
+
 <body>
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
 
     <header>
 
         <h1>Yash Deodhar</h1>
 
-        <button id="theme-toggle" aria-label="Switch to light mode">
 
-            <span class="moon-icon"></span>
+        <div class="header-actions">
 
-            <span class="sun-icon">☀</span>
 
-        </button>
+            <!-- LINKEDIN -->
+
+            <!-- Replace the URL below with your LinkedIn URL -->
+
+            <a
+                class="social-link"
+                href="https://www.linkedin.com/in/YOUR-LINKEDIN"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+            >
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.32 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.1 20.45H3.54V9H7.1v11.45z"/>
+                </svg>
+
+            </a>
+
+
+            <!-- GITHUB -->
+
+            <!-- Replace YOUR-USERNAME with your GitHub username -->
+
+            <a
+                class="social-link"
+                href="https://github.com/YOUR-USERNAME"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+            >
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 .7C5.73.7.7 5.73.7 12c0 5.02 3.25 9.28 7.76 10.78.57.1.78-.25.78-.55v-2.16c-3.16.69-3.83-1.34-3.83-1.34-.52-1.31-1.26-1.66-1.26-1.66-1.03-.71.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.73 2.65 1.23 3.3.94.1-.73.4-1.23.72-1.51-2.52-.29-5.17-1.26-5.17-5.59 0-1.24.44-2.25 1.17-3.04-.12-.29-.51-1.44.11-3 0 0 .95-.3 3.11 1.16A10.8 10.8 0 0 1 12 6.13a10.8 10.8 0 0 1 2.83.38c2.16-1.46 3.11-1.16 3.11-1.16.62 1.56.23 2.71.11 3 .73.79 1.17 1.8 1.17 3.04 0 4.34-2.66 5.3-5.19 5.58.41.35.77 1.04.77 2.1v3.16c0 .3.21.66.78.55A11.31 11.31 0 0 0 23.3 12C23.3 5.73 18.27.7 12 .7z"/>
+                </svg>
+
+            </a>
+
+
+            <!-- CV -->
+
+            <!-- Put your CV PDF in the repository and call it CV.pdf -->
+
+            <a
+                class="social-link"
+                href="CV.pdf"
+                target="_blank"
+                aria-label="CV"
+            >
+
+                <span class="cv-icon">
+                    CV
+                </span>
+
+            </a>
+
+
+            <!-- EMAIL -->
+
+            <!-- Replace the email below -->
+
+            <a
+                class="social-link"
+                href="mailto:YOUR-EMAIL@example.com"
+                aria-label="Email"
+            >
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm10 8L2.5 6.5v11h19v-11L12 12zm0-2.3L20.5 5h-17L12 9.7z"/>
+                </svg>
+
+            </a>
+
+
+            <!-- THEME BUTTON -->
+
+            <button id="theme-toggle" aria-label="Switch to light mode">
+
+                <span class="moon-icon"></span>
+
+                <span class="sun-icon">☀</span>
+
+            </button>
+
+        </div>
 
     </header>
 
+
+
+    <!-- =========================================================
+         PROFILE SECTION
+    ========================================================== -->
+
+    <main>
+
+        <section class="profile">
+
+
+            <!--
+                Put your image in the repository and call it
+                profile.jpg
+
+                Or change "profile.jpg" below to the actual filename.
+            -->
+
+            <img
+                src="profile.jpg"
+                alt="Yash Deodhar"
+                class="profile-photo"
+            >
+
+
+            <div class="profile-text">
+
+                <h2>About Me</h2>
+
+                <p>
+                    Add your introduction here. For example, you can briefly
+                    describe your research interests, current position, and
+                    the areas of mathematics or scientific computing that
+                    you work on.
+                </p>
+
+                <p>
+                    You can add additional paragraphs here describing your
+                    research, education, projects, or anything else you want
+                    visitors to see.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
 
     <script>
 
@@ -257,6 +540,7 @@
         });
 
     </script>
+
 
 </body>
 </html>
