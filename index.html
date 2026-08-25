@@ -459,7 +459,7 @@
                 70% of the browser width.
             */
 
-            width: 70vw;
+            width: 80vw;
 
             margin: 70px auto 60px;
         }
@@ -1183,6 +1183,54 @@
 
 
         });
+
+        /* =========================================================
+           DYNAMIC TAB DISPLAY HEIGHT
+        ========================================================= */
+        
+        function resizeTabDisplay() {
+        
+            const tabDisplay = document.querySelector(".tab-display");
+        
+            /*
+                Distance between the bottom of the display
+                and the bottom of the browser window.
+            */
+            const bottomMargin = 40;
+        
+            /*
+                Find where the display starts vertically.
+            */
+            const displayTop =
+                tabDisplay.getBoundingClientRect().top;
+        
+            /*
+                Remaining available height.
+            */
+            const availableHeight =
+                window.innerHeight
+                - displayTop
+                - bottomMargin;
+        
+            /*
+                Don't allow it to become too small.
+            */
+            tabDisplay.style.minHeight =
+                Math.max(300, availableHeight) + "px";
+        }
+        
+        
+        /* Run when page loads */
+        
+        resizeTabDisplay();
+        
+        
+        /* Recalculate whenever window size changes */
+        
+        window.addEventListener(
+            "resize",
+            resizeTabDisplay
+        );
 
 
     </script>
