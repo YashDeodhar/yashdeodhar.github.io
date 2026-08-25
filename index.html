@@ -333,7 +333,7 @@
             /*
                 Align this section with the name/photo.
             */
-            margin-left: var(--content-left);
+            margin-left: 15%;
         
             width: 70%;
             max-width: 1000px;
@@ -781,33 +781,73 @@
     <!-- =========================================================
          JAVASCRIPT
     ========================================================== -->
-
+    
     <script>
-
+    
+        /* =========================================================
+           DARK / LIGHT MODE
+        ========================================================= */
+    
         const themeToggle = document.getElementById("theme-toggle");
-
+    
         themeToggle.addEventListener("click", function () {
-
+    
             document.body.classList.toggle("light-mode");
-
+    
             if (document.body.classList.contains("light-mode")) {
-
+    
                 themeToggle.setAttribute(
                     "aria-label",
                     "Switch to dark mode"
                 );
-
+    
             } else {
-
+    
                 themeToggle.setAttribute(
                     "aria-label",
                     "Switch to light mode"
                 );
-
+    
             }
-
+    
         });
-
+    
+    
+        /* =========================================================
+           TABS
+        ========================================================= */
+    
+        const tabButtons = document.querySelectorAll(".tab-button");
+        const tabContents = document.querySelectorAll(".tab-content");
+    
+        tabButtons.forEach(function (button) {
+    
+            button.addEventListener("click", function () {
+    
+                const selectedTab = button.getAttribute("data-tab");
+    
+                /* Remove active state from all buttons */
+                tabButtons.forEach(function (btn) {
+                    btn.classList.remove("active");
+                });
+    
+                /* Hide all tab content */
+                tabContents.forEach(function (content) {
+                    content.classList.remove("active");
+                });
+    
+                /* Activate clicked button */
+                button.classList.add("active");
+    
+                /* Show corresponding content */
+                document
+                    .getElementById(selectedTab)
+                    .classList.add("active");
+    
+            });
+    
+        });
+    
     </script>
 
 
