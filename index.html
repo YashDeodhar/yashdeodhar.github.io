@@ -326,10 +326,178 @@
 
 
         /* =========================================================
+           TABBED CONTENT SECTION
+        ========================================================= */
+        
+        .tabs-section {
+            /*
+                Align this section with the name/photo.
+            */
+            margin-left: var(--content-left);
+        
+            width: 70%;
+            max-width: 1000px;
+        
+            margin-top: 70px;
+        }
+        
+        
+        /* ---------------- TAB BUTTONS ---------------- */
+        
+        .tab-buttons {
+            width: 100%;
+        
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: none;
+        
+            border-radius: 8px 8px 0 0;
+        
+            overflow: hidden;
+        }
+        
+        
+        .tab-button {
+            padding: 20px 10px;
+        
+            background-color: transparent;
+            color: inherit;
+        
+            border: none;
+            border-right: 1px solid rgba(255, 255, 255, 0.3);
+        
+            font-family: inherit;
+            font-size: 18px;
+            font-weight: 500;
+        
+            cursor: pointer;
+        
+            transition:
+                background-color 0.25s ease,
+                color 0.25s ease;
+        }
+        
+        
+        .tab-button:last-child {
+            border-right: none;
+        }
+        
+        
+        .tab-button:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+        
+        
+        /*
+            Currently selected tab
+        */
+        
+        .tab-button.active {
+            background-color: #ffffff;
+            color: #111111;
+        }
+        
+        
+        /* ---------------- DISPLAY AREA ---------------- */
+        
+        .tab-display {
+            width: 100%;
+        
+            min-height: 350px;
+        
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        
+            border-radius: 0 0 8px 8px;
+        
+            padding: 40px;
+        }
+        
+        
+        /*
+            Hide all tab contents by default.
+        */
+        
+        .tab-content {
+            display: none;
+        }
+        
+        
+        /*
+            Only show whichever content is active.
+        */
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        
+        .tab-content h2 {
+            margin-top: 0;
+        
+            font-size: 28px;
+            font-weight: 500;
+        }
+        
+        
+        .tab-content p {
+            font-size: 17px;
+            line-height: 1.7;
+        }
+        
+        
+        /* =========================================================
+           TABS — LIGHT MODE
+        ========================================================= */
+        
+        body.light-mode .tab-buttons,
+        body.light-mode .tab-display {
+            border-color: rgba(0, 0, 0, 0.25);
+        }
+        
+        
+        body.light-mode .tab-button {
+            border-right-color: rgba(0, 0, 0, 0.25);
+        }
+        
+        
+        body.light-mode .tab-button:hover {
+            background-color: rgba(0, 0, 0, 0.06);
+        }
+        
+        
+        body.light-mode .tab-button.active {
+            background-color: #111111;
+            color: #ffffff;
+        }
+                
+        /* =========================================================
            MOBILE
         ========================================================= */
 
         @media (max-width: 800px) {
+
+            .tabs-section {
+                width: calc(100% - 50px);
+            
+                margin-left: 25px;
+                margin-top: 50px;
+            }
+            
+            
+            .tab-button {
+                padding: 15px 5px;
+            
+                font-size: 14px;
+            }
+            
+            
+            .tab-display {
+                min-height: 300px;
+            
+                padding: 25px;
+            }
 
             header {
                 height: 150px;
@@ -503,6 +671,107 @@
 
             </div>
 
+        </section>
+
+        <!-- =========================================================
+             TABBED CONTENT
+        ========================================================== -->
+        
+        <section class="tabs-section">
+        
+        
+            <!-- TAB BUTTONS -->
+        
+            <div class="tab-buttons">
+        
+                <button
+                    class="tab-button active"
+                    data-tab="visuals"
+                >
+                    Cool Visuals
+                </button>
+        
+        
+                <button
+                    class="tab-button"
+                    data-tab="projects"
+                >
+                    Projects
+                </button>
+        
+        
+                <button
+                    class="tab-button"
+                    data-tab="teaching"
+                >
+                    Teaching Aids
+                </button>
+        
+            </div>
+        
+        
+        
+            <!-- DISPLAY AREA -->
+        
+            <div class="tab-display">
+        
+        
+                <!-- COOL VISUALS -->
+        
+                <div
+                    id="visuals"
+                    class="tab-content active"
+                >
+        
+                    <h2>Cool Visuals</h2>
+        
+                    <p>
+                        This section will contain animations, simulations,
+                        mathematical visualizations, and other things that I
+                        think look cool.
+                    </p>
+        
+                </div>
+        
+        
+        
+                <!-- PROJECTS -->
+        
+                <div
+                    id="projects"
+                    class="tab-content"
+                >
+        
+                    <h2>Projects</h2>
+        
+                    <p>
+                        This section will contain some of my research and
+                        programming projects.
+                    </p>
+        
+                </div>
+        
+        
+        
+                <!-- TEACHING AIDS -->
+        
+                <div
+                    id="teaching"
+                    class="tab-content"
+                >
+        
+                    <h2>Teaching Aids</h2>
+        
+                    <p>
+                        This section will contain notes, visual explanations,
+                        problem sets, and other teaching resources.
+                    </p>
+        
+                </div>
+        
+        
+            </div>
+        
         </section>
 
     </main>
