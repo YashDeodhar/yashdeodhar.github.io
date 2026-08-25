@@ -53,13 +53,6 @@
 
 
 
-        /*
-            The header uses the SAME grid dimensions
-            as the profile section.
-
-            This keeps the name aligned with the photo.
-        */
-
         .header-content {
 
             width: 90%;
@@ -355,11 +348,6 @@
 
             display: block;
 
-            /*
-                Moves the image slightly below
-                the About Me heading.
-            */
-
             position: relative;
 
             top: 50px;
@@ -455,10 +443,6 @@
 
         .tabs-section {
 
-            /*
-                70% of the browser width.
-            */
-
             width: 80vw;
 
             margin: 70px auto 60px;
@@ -528,8 +512,6 @@
 
 
 
-        /* Currently selected tab */
-
         .tab-button.active {
 
             background-color: #ffffff;
@@ -549,11 +531,18 @@
 
             min-height: 350px;
 
+            position: relative;
+
             border: 1px solid rgba(255, 255, 255, 0.3);
 
             border-radius: 0 0 8px 8px;
 
-            padding: 40px;
+            /*
+                Extra horizontal padding leaves room
+                for the arrows.
+            */
+
+            padding: 40px 70px;
         }
 
 
@@ -593,6 +582,133 @@
 
 
         /* =========================================================
+           CAROUSEL ITEMS
+        ========================================================= */
+
+        .carousel-item {
+
+            display: none;
+        }
+
+
+
+        .carousel-item.active {
+
+            display: block;
+        }
+
+
+
+        /* =========================================================
+           CAROUSEL ARROWS
+        ========================================================= */
+
+        .carousel-arrow {
+
+            position: absolute;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            width: 42px;
+
+            height: 60px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background-color: transparent;
+
+            color: #ffffff;
+
+            font-size: 38px;
+
+            font-weight: 300;
+
+            line-height: 1;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            cursor: pointer;
+
+            z-index: 10;
+
+            /*
+                Arrows are faint by default.
+            */
+
+            opacity: 0.12;
+
+            transition:
+                opacity 0.25s ease,
+                transform 0.25s ease,
+                background-color 0.25s ease;
+        }
+
+
+
+        .carousel-arrow.left {
+
+            left: 12px;
+        }
+
+
+
+        .carousel-arrow.right {
+
+            right: 12px;
+        }
+
+
+
+        /*
+            When the mouse enters the display,
+            both arrows become easier to see.
+        */
+
+        .tab-display:hover .carousel-arrow {
+
+            opacity: 0.65;
+        }
+
+
+
+        /*
+            Directly hovering an arrow makes
+            that arrow fully visible.
+        */
+
+        .carousel-arrow:hover {
+
+            opacity: 1;
+
+            background-color: rgba(255, 255, 255, 0.06);
+
+            transform:
+                translateY(-50%)
+                scale(1.08);
+        }
+
+
+
+        .carousel-arrow:focus-visible {
+
+            opacity: 1;
+
+            outline: 2px solid currentColor;
+
+            outline-offset: 2px;
+        }
+
+
+
+        /* =========================================================
            TABS — LIGHT MODE
         ========================================================= */
 
@@ -627,14 +743,46 @@
 
 
 
+        body.light-mode .carousel-arrow {
+
+            color: #111111;
+        }
+
+
+
+        body.light-mode .carousel-arrow:hover {
+
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+
+
+        /* =========================================================
+           TOUCH DEVICES
+        ========================================================= */
+
+        /*
+            Phones don't really have hover, so don't make
+            the arrows nearly invisible there.
+        */
+
+        @media (hover: none) {
+
+            .carousel-arrow {
+
+                opacity: 0.55;
+            }
+
+        }
+
+
+
         /* =========================================================
            MOBILE
         ========================================================= */
 
         @media (max-width: 800px) {
 
-
-            /* ---------------- HEADER ---------------- */
 
             header {
 
@@ -653,10 +801,6 @@
             }
 
 
-
-            /*
-                Same width and centering as the photo below.
-            */
 
             .header-content h1 {
 
@@ -679,8 +823,6 @@
             }
 
 
-
-            /* ---------------- PROFILE ---------------- */
 
             .profile {
 
@@ -724,8 +866,6 @@
 
 
 
-            /* ---------------- TABS ---------------- */
-
             .tabs-section {
 
                 width: 90vw;
@@ -748,7 +888,36 @@
 
                 min-height: 300px;
 
-                padding: 25px;
+                /*
+                    Leave room for arrows on phones too.
+                */
+
+                padding: 25px 50px;
+            }
+
+
+
+            .carousel-arrow {
+
+                width: 36px;
+
+                height: 52px;
+
+                font-size: 32px;
+            }
+
+
+
+            .carousel-arrow.left {
+
+                left: 5px;
+            }
+
+
+
+            .carousel-arrow.right {
+
+                right: 5px;
             }
 
         }
@@ -955,8 +1124,6 @@
             <div class="tab-buttons">
 
 
-                <!-- PROJECTS -->
-
                 <button
                     type="button"
                     class="tab-button active"
@@ -969,8 +1136,6 @@
 
 
 
-                <!-- COOL VISUALS -->
-
                 <button
                     type="button"
                     class="tab-button"
@@ -982,8 +1147,6 @@
                 </button>
 
 
-
-                <!-- TEACHING -->
 
                 <button
                     type="button"
@@ -1007,64 +1170,194 @@
             <div class="tab-display">
 
 
-                <!-- PROJECTS -->
+                <!-- LEFT ARROW -->
+
+                <button
+                    type="button"
+                    class="carousel-arrow left"
+                    id="previous-item"
+                    aria-label="Previous item"
+                >
+                    ‹
+                </button>
+
+
+
+                <!-- =================================================
+                     PROJECTS
+                ================================================== -->
 
                 <div
                     id="projects"
                     class="tab-content active"
                 >
 
-                    <h2>Projects</h2>
 
-                    <p>
+                    <!-- PROJECT 1 -->
 
-                        This section will contain some of my research and
-                        programming projects.
+                    <div class="carousel-item active">
 
-                    </p>
+                        <h2>Project 1</h2>
+
+                        <p>
+                            Description of my first project.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- PROJECT 2 -->
+
+                    <div class="carousel-item">
+
+                        <h2>Project 2</h2>
+
+                        <p>
+                            Description of my second project.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- PROJECT 3 -->
+
+                    <div class="carousel-item">
+
+                        <h2>Project 3</h2>
+
+                        <p>
+                            Description of my third project.
+                        </p>
+
+                    </div>
+
 
                 </div>
 
 
 
-                <!-- COOL VISUALS -->
+                <!-- =================================================
+                     COOL VISUALS
+                ================================================== -->
 
                 <div
                     id="visuals"
                     class="tab-content"
                 >
 
-                    <h2>Cool Visuals</h2>
 
-                    <p>
+                    <!-- VISUAL 1 -->
 
-                        This section will contain animations, simulations,
-                        mathematical visualizations, and other things that I
-                        think look cool.
+                    <div class="carousel-item active">
 
-                    </p>
+                        <h2>Visual 1</h2>
+
+                        <p>
+                            My first mathematical visualization.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- VISUAL 2 -->
+
+                    <div class="carousel-item">
+
+                        <h2>Visual 2</h2>
+
+                        <p>
+                            My second mathematical visualization.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- VISUAL 3 -->
+
+                    <div class="carousel-item">
+
+                        <h2>Visual 3</h2>
+
+                        <p>
+                            My third mathematical visualization.
+                        </p>
+
+                    </div>
+
 
                 </div>
 
 
 
-                <!-- TEACHING AIDS -->
+                <!-- =================================================
+                     TEACHING AIDS
+                ================================================== -->
 
                 <div
                     id="teaching"
                     class="tab-content"
                 >
 
-                    <h2>Teaching Aids</h2>
 
-                    <p>
+                    <!-- TEACHING AID 1 -->
 
-                        This section will contain notes, visual explanations,
-                        problem sets, and other teaching resources.
+                    <div class="carousel-item active">
 
-                    </p>
+                        <h2>Teaching Aid 1</h2>
+
+                        <p>
+                            My first teaching resource.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- TEACHING AID 2 -->
+
+                    <div class="carousel-item">
+
+                        <h2>Teaching Aid 2</h2>
+
+                        <p>
+                            My second teaching resource.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- TEACHING AID 3 -->
+
+                    <div class="carousel-item">
+
+                        <h2>Teaching Aid 3</h2>
+
+                        <p>
+                            My third teaching resource.
+                        </p>
+
+                    </div>
+
 
                 </div>
+
+
+
+                <!-- RIGHT ARROW -->
+
+                <button
+                    type="button"
+                    class="carousel-arrow right"
+                    id="next-item"
+                    aria-label="Next item"
+                >
+                    ›
+                </button>
 
 
             </div>
@@ -1088,7 +1381,8 @@
            DARK / LIGHT MODE
         ========================================================= */
 
-        const themeToggle = document.getElementById("theme-toggle");
+        const themeToggle =
+            document.getElementById("theme-toggle");
 
 
         themeToggle.addEventListener("click", function () {
@@ -1156,7 +1450,7 @@
 
 
 
-                /* Hide all tab content */
+                /* Hide all tab categories */
 
                 tabContents.forEach(function (content) {
 
@@ -1172,11 +1466,39 @@
 
 
 
-                /* Show corresponding content */
+                /* Show selected category */
 
-                document
-                    .getElementById(selectedTab)
-                    .classList.add("active");
+                const selectedContent =
+                    document.getElementById(selectedTab);
+
+
+                selectedContent.classList.add("active");
+
+
+
+                /*
+                    Reset newly selected category
+                    to its first item.
+                */
+
+                const items =
+                    selectedContent.querySelectorAll(
+                        ".carousel-item"
+                    );
+
+
+                items.forEach(function (item) {
+
+                    item.classList.remove("active");
+
+                });
+
+
+                if (items.length > 0) {
+
+                    items[0].classList.add("active");
+
+                }
 
 
             });
@@ -1184,49 +1506,210 @@
 
         });
 
+
+
+        /* =========================================================
+           CAROUSEL
+        ========================================================= */
+
+        const previousButton =
+            document.getElementById("previous-item");
+
+
+        const nextButton =
+            document.getElementById("next-item");
+
+
+
+        function changeCarouselItem(direction) {
+
+
+            /*
+                Find currently selected category.
+            */
+
+            const activeTab =
+                document.querySelector(
+                    ".tab-content.active"
+                );
+
+
+            if (!activeTab) {
+
+                return;
+
+            }
+
+
+
+            /*
+                Find items in current category.
+            */
+
+            const items =
+                activeTab.querySelectorAll(
+                    ".carousel-item"
+                );
+
+
+            if (items.length === 0) {
+
+                return;
+
+            }
+
+
+
+            /*
+                Find currently visible item.
+            */
+
+            let currentIndex = 0;
+
+
+            items.forEach(function (item, index) {
+
+
+                if (item.classList.contains("active")) {
+
+                    currentIndex = index;
+
+                }
+
+
+            });
+
+
+
+            /*
+                Hide current item.
+            */
+
+            items[currentIndex]
+                .classList.remove("active");
+
+
+
+            /*
+                Find next item.
+
+                This wraps around automatically:
+                1 -> 2 -> 3 -> 1
+                or
+                1 <- 2 <- 3 <- 1
+            */
+
+            const newIndex =
+                (
+                    currentIndex
+                    + direction
+                    + items.length
+                )
+                % items.length;
+
+
+
+            /*
+                Show new item.
+            */
+
+            items[newIndex]
+                .classList.add("active");
+
+
+        }
+
+
+
+        /* LEFT ARROW */
+
+        previousButton.addEventListener(
+            "click",
+            function () {
+
+                changeCarouselItem(-1);
+
+            }
+        );
+
+
+
+        /* RIGHT ARROW */
+
+        nextButton.addEventListener(
+            "click",
+            function () {
+
+                changeCarouselItem(1);
+
+            }
+        );
+
+
+
         /* =========================================================
            DYNAMIC TAB DISPLAY HEIGHT
         ========================================================= */
-        
+
         function resizeTabDisplay() {
-        
-            const tabDisplay = document.querySelector(".tab-display");
-        
+
+
+            const tabDisplay =
+                document.querySelector(".tab-display");
+
+
             /*
-                Distance between the bottom of the display
-                and the bottom of the browser window.
+                Distance between display
+                and bottom of browser.
             */
+
             const bottomMargin = 40;
-        
+
+
+
             /*
-                Find where the display starts vertically.
+                Find vertical position
+                where display begins.
             */
+
             const displayTop =
-                tabDisplay.getBoundingClientRect().top;
-        
+                tabDisplay
+                    .getBoundingClientRect()
+                    .top;
+
+
+
             /*
-                Remaining available height.
+                Find remaining screen height.
             */
+
             const availableHeight =
                 window.innerHeight
                 - displayTop
                 - bottomMargin;
-        
+
+
+
             /*
-                Don't allow it to become too small.
+                Don't let display get too small.
             */
+
             tabDisplay.style.minHeight =
-                Math.max(300, availableHeight) + "px";
+                Math.max(
+                    300,
+                    availableHeight
+                )
+                + "px";
+
+
         }
-        
-        
-        /* Run when page loads */
-        
+
+
+
         resizeTabDisplay();
-        
-        
-        /* Recalculate whenever window size changes */
-        
+
+
+
         window.addEventListener(
             "resize",
             resizeTabDisplay
