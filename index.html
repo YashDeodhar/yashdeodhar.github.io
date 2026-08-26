@@ -579,6 +579,37 @@
             line-height: 1.7;
         }
 
+        .desmos-link {
+            display: inline-block;
+        
+            margin-top: 10px;
+        
+            color: inherit;
+        
+            font-size: 16px;
+            text-decoration: none;
+        
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        
+            padding-bottom: 2px;
+        
+            transition:
+                opacity 0.2s ease,
+                border-color 0.2s ease;
+        }
+        
+        .desmos-link:hover {
+            opacity: 0.7;
+            border-color: #ffffff;
+        }
+        
+        body.light-mode .desmos-link {
+            border-color: rgba(0, 0, 0, 0.4);
+        }
+        
+        body.light-mode .desmos-link:hover {
+            border-color: #111111;
+        }
 
 
         /* =========================================================
@@ -1351,11 +1382,22 @@
 
                             <div class="teaching-aid-text">
 
-                                <h2>Teaching Aid 1</h2>
+                                <h2>Visualizing Green's Function Solutions</h2>
 
                                 <p>
-                                    My first teaching resource.
+                                    A visual representation of how a Riemann-sum approximation of the Green’s-function integral (blue) converges to the true 
+                                    solution (red) of an elementary ODE. The Desmos graph allows students to explore different boundary value problems and their 
+                                    corresponding Green’s functions. It also serves to introduce undergraduate students to the power of numerical methods.
                                 </p>
+
+                                <a
+                                    class="desmos-link"
+                                    href="https://www.desmos.com/calculator/ms759easoj"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Link to Desmos Graph
+                                </a>
 
                             </div>
 
