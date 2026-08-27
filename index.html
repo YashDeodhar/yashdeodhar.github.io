@@ -1466,12 +1466,12 @@
 
                             <div class="teaching-aid-text">
 
-                                <h2>Stability of Explicit Midpoint Rule</h2>
+                                <h2>Stability of Leapfrog Method</h2>
 
                                 <p>
                                    An example of theory versus practice. In theory, the region of absolute stability of the leapfrog method for this problem is 
-                                    the imaginary-axis segment (-i,i). Thus, for a nonzero real eigenvalue, no positive timestep is absolutely stable. In 
-                                    practice, however, for a finite final time T (e.g. T = 1 here), a sufficiently small timestep can keep the numerical 
+                                    the line segment (-i,i). Thus, for a nonzero real eigenvalue, no positive timestep is absolutely stable. In 
+                                    practice, however, for a finite final time T (e.g. T = 0.5 here), a sufficiently small timestep can keep the numerical 
                                     solution bounded over [0,T], even though the solution eventually blows up.
                                 </p>
 
@@ -1508,10 +1508,10 @@
                                 <h2>Viscous Burgers Equation solver in Desmos</h2>
 
                                 <p>
-                                    Due to the symbolic nature of Desmos, update steps that are nearly identical to the corresponding equations can be written 
-                                    down. Furthermore, it is extremely intiutive and poses a much lower barrier of entry compared to traditional coding for 
-                                    students. Here I show a proof of concept of using Desmos to illustrate numerical methods for PDEs, which can easily be extended
-                                    to other explicit timesteppers and PDEs.
+                                    Here I show a proof of concept of using Desmos to numerically solve PDEs, which can easily be extended
+                                    to other explicit timesteppers and PDEs. An advantage of this is that due to the symbolic nature of desmos,
+                                    the update steps are nearly identical to their correspoinding equations which poses a much lower barrier for
+                                    undergraduate students when compared to traditional coding
                                 </p>
 
                                 <a
