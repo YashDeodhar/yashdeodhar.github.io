@@ -1280,15 +1280,14 @@
                                 <h2>Optimal parameter selection for Anderson Acceleration</h2>
                     
                                 <p>
-                                    Anderson Acceleration (AA) is a method for solving fixed-point problems
-                                    whose cost per iteration scales as \(O(N)\). Here, I compare its performance
+                                    Anderson Acceleration (AA) is a method for solving fixed-point problems. Here, I compare its performance
                                     against other popular nonlinear solvers on the Bratu problem
-                                    \(-\Delta u = \lambda e^{u}\) with \(N = 300^2\). I show that a
+                                    \(-\Delta u = \lambda e^{u}\) with \(N = 300^2\), \(\lamda=0.6\). I show that a
                                     linear approximation to one of AA's key parameters, the damping parameter
-                                    \(\beta\), dramatically improves its performance. For suitable problems (like this one),
-                                    AA with the optimal damping parameter is the best choice of nonlinear
-                                    solver: it keeps the \(O(N)\) cost per iteration of fixed-point iteration
-                                    (FPI) while converging at a substantially faster rate. My current project
+                                    \(\beta\), dramatically improves its performance. On this problem, AA with
+                                    the approximate optimal damping parameter reaches the tolerance threshold faster than all the other methods
+                                    compared here: it has the \(\mathcal{O}(N)\) per-iteration cost of fixed-point iteration (FPI) while converging
+                                    substantially faster. My current project
                                     develops general theory for approximating the optimal damping parameter.
                                 </p>
                     
